@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <bean id="applicationContextUtils" class="com.bighuobi.api.gate.utils.ApplicationContextUtils"/>
+
+    <context:component-scan base-package="com.bighuobi.api">
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <context:property-placeholder
+            location="classpath*:/conf/*.properties"/>
+
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="basenames">
+            <list>
+                <value>errorMessages</value>
+                <value>futures_errorMessages</value>
+                <value>mobile_errorMessage</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="kaptchaConfig" class="com.google.code.kaptcha.util.Config">
+        <constructor-arg>
+            <props>
+                <prop key="kaptcha.border">yes</prop>
+                <prop key="kaptcha.border.color">105,179,90</prop>
+                <prop key="kaptcha.textproducer.char.string">0123456789</prop>
+                <prop key="kaptcha.textproducer.font.color">red</prop>
+                <prop key="kaptcha.textproducer.font.size">30</prop>
+                <prop key="kaptcha.textproducer.char.length">4</prop>
+                <!--<prop key="kaptcha.textproducer.char.space">2</prop>-->
+                <prop key="kaptcha.textproducer.font.names">宋体,楷体,微软雅黑</prop>
+                <prop key="kaptcha.image.width">120</prop>
+                <prop key="kaptcha.image.height">40</prop>
+                <prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.NoNoise</prop>
+                <prop key="kaptcha.word.impl">com.google.code.kaptcha.text.impl.DefaultWordRenderer</prop>
+            </props>
+        </constructor-arg>
+    </bean>
+
+    <!-- kaptcha验证码 -->
+    <bean id="kaptchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+        <property name="config" ref="kaptchaConfig"/>
+    </bean>
+</beans>

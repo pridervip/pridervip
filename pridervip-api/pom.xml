@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+	<groupId>com.pridervip</groupId>
+    <artifactId>pridervip-api</artifactId>
+    <packaging>jar</packaging>
+    <version>0.0.2-SNAPSHOT</version>
+    <name>pridervip-api</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <spring.version>5.0.6.RELEASE</spring.version>
+        <logback.version>1.1.2</logback.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <zkclient.version>0.1</zkclient.version>
+        <zookeeper.version>3.4.5</zookeeper.version>
+        <dubbo.version>2.5.3</dubbo.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <fasterxml.version>2.2.2</fasterxml.version>
+        <mysql.version>5.1.13</mysql.version>
+        <bonecp.version>0.8.0.RELEASE</bonecp.version>
+    </properties>
+    <dependencies>
+    	<!-- fasterxml -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${fasterxml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${fasterxml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${fasterxml.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

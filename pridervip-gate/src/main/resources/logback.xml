@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<property resource="conf/application.properties" />
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>log/huobi-push-gate.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>log/huobi-push-gate.%i.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+
+        <triggeringPolicy
+            class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>50MB</MaxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d [%t] %-5p %C.%M\(%L\) -%m%n</Pattern>
+        </layout>
+    </appender>
+    
+	<appender name="kafka-appender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+        <encoder class="com.github.danielwegener.logback.kafka.encoding.PatternLayoutKafkaMessageEncoder">
+            <layout class="net.logstash.logback.layout.LogstashLayout">
+                <customFields>{"app":"huobi-push-gate"}</customFields>
+            </layout>
+        </encoder>
+        <topic>huobi-logger</topic>
+        <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.RoundRobinKeyingStrategy" />
+        <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
+        <producerConfig>bootstrap.servers=${kafka.servers}</producerConfig>
+        <producerConfig>acks=1</producerConfig>
+        <producerConfig>linger.ms=1000</producerConfig>
+        <producerConfig>block.on.buffer.full=false</producerConfig>
+    </appender>	
+    <logger name="org.apache" level="ERROR" />
+    <root level="info">
+   		<appender-ref ref="FILE"/>
+   		<appender-ref ref="kafka-appender"/>
+    </root>
+</configuration>

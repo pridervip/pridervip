@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 提供方应用信息，用于计算依赖关系  ，不是匹配条件，不要与提供方一样-->
+    <dubbo:application name="huobi_push_api_gate_consumer"/>
+    <!-- 使用zk注册中心暴露服务地址 -->
+    <dubbo:registry protocol="zookeeper" address="${address}"/>
+    
+    <!-- 监控中心配置，从注册中心发现监控中心地址 -->
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+    <!-- 现货资产和委托服务代理
+    <dubbo:reference id="balanceService"
+                     interface="com.bighuobi.api.service.BalanceService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    <dubbo:reference id="orderService"
+                     interface="com.bighuobi.api.service.OrderService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    -->
+    
+    <!-- 合约 code
+    <dubbo:reference id="futuresContractService"
+                     interface="com.bighuobi.api.service.FuturesContractService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    -->
+
+    <!-- 期货资产和委托服务代理
+    <dubbo:reference id="futuresBalanceService"
+                     interface="com.bighuobi.api.service.FuturesBalanceService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    <dubbo:reference id="futuresOrderService"
+                     interface="com.bighuobi.api.service.FuturesOrderService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    <dubbo:reference id="holdOrderService"
+                     interface="com.bighuobi.api.service.HoldOrderService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    -->
+
+    <!-- BitVC系统用户相关服务
+    <dubbo:reference id="userService"
+                     interface="com.bighuobi.api.service.UserService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    <dubbo:reference id="futuresInfoService"
+                     interface="com.bighuobi.api.service.FuturesInfoService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    -->
+
+    <!-- 交易API验证请求的私钥正确性
+    <dubbo:reference id="validationService"
+                     interface="com.bighuobi.api.service.ValidationService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    -->
+    
+    <!-- 推送服务 -->
+    <dubbo:reference id="pushService"
+                     interface="com.bighuobi.api.service.PushService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+                     
+    <dubbo:reference id="pushPriceNoticeService"
+                     interface="com.bighuobi.api.service.PushPriceNoticeService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+
+</beans>

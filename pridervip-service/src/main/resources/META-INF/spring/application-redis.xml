@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <property name="maxTotal" value="${redis.maxTotal}"/>
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}"/>
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+    </bean>
+
+    <!-- 期货价格信息 -->
+    <bean id="connectionFactory0"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:host-name="${redis.host}" p:port="${redis.port}" p:pool-config-ref="poolConfig"
+          p:database="${redis.index0}"/>
+    <!--现货比特币价格信息-->
+    <bean id="connectionFactory4"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:host-name="${redis.host}" p:port="${redis.port}" p:pool-config-ref="poolConfig"
+          p:database="${redis.index4}"/>
+    <!--现货莱特币价格信息-->
+    <bean id="connectionFactory5"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:host-name="${redis.host}" p:port="${redis.port}" p:pool-config-ref="poolConfig"
+          p:database="${redis.index5}"/>
+    <!--index=6-->
+    <bean id="connectionFactory6"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:host-name="${redis.host}" p:port="${redis.port}" p:pool-config-ref="poolConfig"
+          p:database="${redis.index6}"/>
+    <!--index=7-->
+    <bean id="connectionFactory7"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:host-name="${redis.host}" p:port="${redis.port}" p:pool-config-ref="poolConfig"
+          p:database="${redis.index7}"/>
+
+    <bean id="redisTemplate0" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory0"/>
+    </bean>
+    <bean id="redisTemplate4" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory4"/>
+    </bean>
+    <bean id="redisTemplate5" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory5"/>
+    </bean>
+    <bean id="redisTemplate6" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory6"/>
+    </bean>
+    <bean id="redisTemplate7" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory7"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="huobi_push_api_provider"/>
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <!--<dubbo:registry id="huobi_push_server" address="zookeeper://127.0.0.1:2181"/>-->
+    <dubbo:registry id="huobi_push_server" protocol="zookeeper" address="${address}"/>
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="${dubbo_server_port}" host="${dubbo_server_host}"/>
+    
+    <!-- 监控中心配置，从注册中心发现监控中心地址 -->
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- 声明需要暴露的服务接口 -->
+    <!-- 交易API校验私钥服务
+    <dubbo:service interface="com.bighuobi.api.service.ValidationService"
+                   ref="validationService"
+                   registry="bitvc_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    -->
+                   
+    <!-- 现货服务
+    <dubbo:service interface="com.bighuobi.api.service.BalanceService"
+                   ref="balanceService"
+                   registry="bitvc_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    <dubbo:service interface="com.bighuobi.api.service.OrderService"
+                   ref="orderService"
+                   registry="bitvc_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    -->
+                   
+	<!-- 合约 code
+    <dubbo:service interface="com.bighuobi.api.service.FuturesContractService"
+                   ref="futuresContractService"
+                   registry="bitvc_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    -->
+    
+    <!-- 期货服务
+    <dubbo:service interface="com.bighuobi.api.service.FuturesBalanceService"
+                   ref="futuresBalanceService"
+                   registry="bitvc_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    <dubbo:service interface="com.bighuobi.api.service.FuturesOrderService"
+                   ref="futuresOrderService"
+                   registry="bitvc_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    <dubbo:service interface="com.bighuobi.api.service.HoldOrderService"
+                   ref="holdOrderService"
+                   registry="bitvc_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    -->
+    
+    <!-- BitVC系统用户服务
+    <dubbo:service interface="com.bighuobi.api.service.UserService"
+                   ref="userService"
+                   registry="bitvc_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    -->
+                   
+    <!-- BitVC信息服务
+    <dubbo:service interface="com.bighuobi.api.service.FuturesInfoService"
+                   ref="futuresInfoService"
+                   registry="bitvc_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    -->
+
+	<!-- 推送服务 -->
+    <dubbo:service interface="com.bighuobi.api.service.PushService"
+                   ref="pushService"
+                   registry="huobi_push_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+
+    <dubbo:service interface="com.bighuobi.api.service.PushPriceNoticeService"
+                   ref="pushPriceNoticeService"
+                   registry="huobi_push_server"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+
+</beans>

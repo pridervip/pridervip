@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                            	    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 使用zk注册中心暴露服务地址 -->
+    <!--<dubbo:registry id="huobi_server" address="zookeeper://127.0.0.1:2181"/>-->
+    <dubbo:registry id="huobi_server" protocol="zookeeper" address="${address}"/>
+    
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+    
+    <!-- 
+    <dubbo:reference id="orderInfoServ"
+                     interface="com.huobi.service.OrderInfoServ"
+                     registry="huobi_server" 
+                     group="${hb_group}" version="${hb_version}" timeout="${timeout}"/>
+
+    <dubbo:reference id="orderBuyServ"
+                     interface="com.huobi.service.OrderBuyServ"
+                     registry="huobi_server" 
+                     group="${hb_group}" version="${hb_version}" timeout="${timeout}"/>
+
+    <dubbo:reference id="orderBuyMarketServ"
+                     interface="com.huobi.service.OrderBuyMarketServ"
+                     registry="huobi_server" 
+                     group="${hb_group}" version="${hb_version}" timeout="${timeout}"/>
+
+    <dubbo:reference id="orderSellServ"
+                     interface="com.huobi.service.OrderSellServ"
+                     registry="huobi_server" 
+                     group="${hb_group}" version="${hb_version}" timeout="${timeout}"/>
+
+    <dubbo:reference id="orderSellMarketServ"
+                     interface="com.huobi.service.OrderSellMarketServ"
+                     registry="huobi_server" 
+                     group="${hb_group}" version="${hb_version}" timeout="${timeout}"/>
+
+    <dubbo:reference id="orderCancelServ"
+                     interface="com.huobi.service.OrderCancelServ"
+                     registry="huobi_server" 
+                     group="${hb_group}" version="${hb_version}" timeout="${timeout}"/>
+    -->
+
+
+</beans>
