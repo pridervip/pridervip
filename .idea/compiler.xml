@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pridervip-api" />
+        <module name="pridervip-gate" />
         <module name="pridervip-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="pridervip-api" target="1.5" />
+      <module name="pridervip-gate" target="1.9" />
       <module name="pridervip-server" target="1.5" />
       <module name="pridervip-service" target="1.9" />
     </bytecodeTargetLevel>

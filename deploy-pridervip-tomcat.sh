@@ -11,6 +11,6 @@ readonly SOA_CONF="$(cd $(dirname $0);pwd)"
 kill `pgrep -lf tomcat |grep /opt/apache-tomcat | awk '{print $1}'` > /dev/null 2>&1
 
 echo "unzip $1 ing ..."
-unzip $1 -d $SOA_CONF/pridervip
+unzip $1 -d $SOA_CONF/huobi-push
 
 cd /opt/apache-tomcat/bin && ./startup.sh
