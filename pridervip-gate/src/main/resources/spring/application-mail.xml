@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+   <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="protocol" value="${email.protocol}"/>
         <property name="host" value="${email.host}"/>
         <property name="port" value="${email.port}"/>
@@ -15,5 +15,5 @@
                 <prop key="mail.${email.protocol}.timeout">${email.timeout}</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
 </beans>

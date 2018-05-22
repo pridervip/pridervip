@@ -17,7 +17,7 @@
         </layout>
     </appender>
     
-	<appender name="kafka-appender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+	<!--<appender name="kafka-appender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
         <encoder class="com.github.danielwegener.logback.kafka.encoding.PatternLayoutKafkaMessageEncoder">
             <layout class="net.logstash.logback.layout.LogstashLayout">
                 <customFields>{"app":"huobi-push-gate"}</customFields>
@@ -30,10 +30,10 @@
         <producerConfig>acks=1</producerConfig>
         <producerConfig>linger.ms=1000</producerConfig>
         <producerConfig>block.on.buffer.full=false</producerConfig>
-    </appender>	
+    </appender>	-->
     <logger name="org.apache" level="ERROR" />
     <root level="info">
    		<appender-ref ref="FILE"/>
-   		<appender-ref ref="kafka-appender"/>
+        <!--<appender-ref ref="kafka-appender"/>-->
     </root>
 </configuration>

@@ -57,11 +57,11 @@
     
     <!-- 推送服务 -->
     <dubbo:reference id="pushService"
-                     interface="com.bighuobi.api.service.PushService"
+                     interface="com.pridervip.api.service.PushService"
                      group="${group}" version="${version}" timeout="${timeout}"/>
                      
     <dubbo:reference id="pushPriceNoticeService"
-                     interface="com.bighuobi.api.service.PushPriceNoticeService"
+                     interface="com.pridervip.api.service.PushPriceNoticeService"
                      group="${group}" version="${version}" timeout="${timeout}"/>
 
 </beans>
