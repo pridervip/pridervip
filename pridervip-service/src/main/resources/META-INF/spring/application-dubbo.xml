@@ -15,7 +15,14 @@
     <dubbo:monitor protocol="registry"/>
 
     <!-- 声明需要暴露的服务接口 -->
-
+    <dubbo:service interface="com.pridervip.service.TestDubbo"
+                                        ref="testDubbo"
+                                        registry="pridervip-service"
+                                        group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
+    <dubbo:service interface="com.pridervip.service.UserService"
+                   ref="userService"
+                   registry="pridervip-service"
+                   group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
 	<!--&lt;!&ndash; 推送服务 &ndash;&gt;
     <dubbo:service interface="com.bighuobi.api.service.PushService"
                    ref="pushService"
@@ -27,4 +34,6 @@
                    registry="huobi_push_server"
                    group="${group}" version="${version}" timeout="${timeout}" executes="${executes}"/>
 -->
+    <bean id="testDubbo" class="com.pridervip.service.impl.TestDubboServiceImpl"/>
+    <bean id="userService" class="com.pridervip.service.impl.UserServiceImpl"/>
 </beans>

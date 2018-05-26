@@ -33,28 +33,11 @@
 
     <filter>
         <filter-name>sessionAwareFilter</filter-name>
-        <filter-class>com.bighuobi.api.gate.filter.SessionAwareFilter</filter-class>
+        <filter-class>com.pridervip.gate.filter.SessionAwareFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>sessionAwareFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <filter>
-        <filter-name>visitLimitedFilter</filter-name>
-        <filter-class>com.bighuobi.api.gate.filter.VisitLimitedFilter</filter-class>
-        <init-param>
-            <param-name>interval</param-name>
-            <param-value>10</param-value>
-        </init-param>
-        <init-param>
-            <param-name>limited</param-name>
-            <param-value>300</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>visitLimitedFilter</filter-name>
-        <url-pattern>/api/*</url-pattern>
     </filter-mapping>
 
     <context-param>
@@ -95,4 +78,5 @@
         <servlet-name>spring mvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>

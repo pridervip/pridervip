@@ -14,9 +14,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="pridervip-api" target="1.5" />
-      <module name="pridervip-gate" target="1.9" />
+      <module name="pridervip-gate" target="1.8" />
       <module name="pridervip-server" target="1.5" />
-      <module name="pridervip-service" target="1.9" />
+      <module name="pridervip-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

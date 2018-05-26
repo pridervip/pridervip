@@ -13,7 +13,17 @@
     <dubbo:monitor protocol="registry"/>
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+    <dubbo:reference id="testDubbo"
+                     interface="com.pridervip.service.TestDubbo"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    <dubbo:reference id="userService"
+                     interface="com.pridervip.service.UserService"
+                     group="${group}" version="${version}" timeout="${timeout}"/>
+    <!--<dubbo:reference id="userMapper"-->
+                     <!--interface="com.pridervip.service.UserMapper"-->
+                     <!--group="${group}" version="${version}" timeout="${timeout}"/>-->
     <!-- 现货资产和委托服务代理
+
     <dubbo:reference id="balanceService"
                      interface="com.bighuobi.api.service.BalanceService"
                      group="${group}" version="${version}" timeout="${timeout}"/>
@@ -56,12 +66,12 @@
     -->
     
     <!-- 推送服务 -->
-    <dubbo:reference id="pushService"
-                     interface="com.bighuobi.api.service.PushService"
-                     group="${group}" version="${version}" timeout="${timeout}"/>
-                     
-    <dubbo:reference id="pushPriceNoticeService"
-                     interface="com.bighuobi.api.service.PushPriceNoticeService"
-                     group="${group}" version="${version}" timeout="${timeout}"/>
+    <!--<dubbo:reference id="pushService"-->
+                     <!--interface="com.pridervip.api.service.PushService"-->
+                     <!--group="${group}" version="${version}" timeout="${timeout}"/>-->
+                     <!---->
+    <!--<dubbo:reference id="pushPriceNoticeService"-->
+                     <!--interface="com.pridervip.api.service.PushPriceNoticeService"-->
+                     <!--group="${group}" version="${version}" timeout="${timeout}"/>-->
 
 </beans>
